@@ -1,0 +1,58 @@
+{
+  "scenario": "mock",
+  "task": "ttl_review",
+  "repeat": 1,
+  "architecture": "mock_validation",
+  "grade": {
+    "score": 1.0,
+    "success": true,
+    "outcomes_correct": 5,
+    "expected_outcomes": [
+      "error",
+      "fail",
+      "fail",
+      "pass",
+      "pass"
+    ],
+    "actual_outcomes": [
+      "error",
+      "fail",
+      "fail",
+      "pass",
+      "pass"
+    ],
+    "expected_defects": [
+      "constructor_shadowing",
+      "eviction_before_expiry",
+      "frozen_clock"
+    ],
+    "actual_defects": [
+      "constructor_shadowing",
+      "eviction_before_expiry",
+      "frozen_clock"
+    ],
+    "note": "Structured classification score; explanations retained for human audit, not semantically graded."
+  },
+  "duration_s": 0.0008001129999684053,
+  "calls": [
+    {
+      "content": "{\"outcomes\":[\"error\",\"fail\",\"fail\",\"pass\",\"pass\"],\"defects\":[{\"category\":\"constructor_shadowing\"},{\"category\":\"frozen_clock\"},{\"category\":\"eviction_before_expiry\"}]}",
+      "reasoning": "checking",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 10
+      },
+      "server_timings": {},
+      "ttft_s": 0.0006973080003263021,
+      "first_content_s": 0.0007061420001264196,
+      "duration_s": 0.000736788000267552,
+      "finish_reason": "stop",
+      "text_chunks": 2,
+      "output_tokens_per_wall_second": 57004.18571522394
+    }
+  ],
+  "completion_tokens": 42,
+  "tokens_known": true,
+  "ttft_s": 0.0006973080003263021,
+  "first_content_s": 0.0007061420001264196
+}

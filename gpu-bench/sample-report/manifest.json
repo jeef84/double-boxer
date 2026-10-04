@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "created": "MOCK integration test only \u2014 no GPU measurements",
+  "config": {
+    "settings": {
+      "tasks": [
+        "ttl_review"
+      ],
+      "repeats": 2,
+      "concurrency": [
+        1,
+        2
+      ],
+      "load_requests_per_level": 2
+    },
+    "nodes": [],
+    "scenarios": [
+      {
+        "id": "mock",
+        "label": "MOCK SERVER \u2014 NOT GPU MEASUREMENTS",
+        "architecture": "mock_validation",
+        "endpoints": [
+          {
+            "url": "http://127.0.0.1:40747/v1"
+          }
+        ]
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "mock",
+      "label": "MOCK SERVER \u2014 NOT GPU MEASUREMENTS",
+      "architecture": "mock_validation",
+      "endpoints": [
+        {
+          "url": "http://127.0.0.1:40747/v1"
+        }
+      ]
+    }
+  ],
+  "client": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "linux"
+  },
+  "suite_sha256": "cc3fad1972aed82c9db1b978f553d6fe0211f9dac9b41808c9db91a684d867e2"
+}

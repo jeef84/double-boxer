@@ -1,0 +1,12 @@
+test_actual_execution_pass_and_fail (test_harness.Tests.test_actual_execution_pass_and_fail) ... ok
+test_collaboration_runs_three_calls (test_harness.Tests.test_collaboration_runs_three_calls) ... ok
+test_complete_trial_report_and_load (test_harness.Tests.test_complete_trial_report_and_load) ... ok
+test_malformed_not_success (test_harness.Tests.test_malformed_not_success) ... ok
+test_regression_mutation_grader (test_harness.Tests.test_regression_mutation_grader) ... ok
+test_review_false_positives_penalized (test_harness.Tests.test_review_false_positives_penalized) ... ok
+test_stream_usage_reasoning_and_answer_timing (test_harness.Tests.test_stream_usage_reasoning_and_answer_timing) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.053s
+
+OK

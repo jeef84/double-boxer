@@ -1,0 +1,173 @@
+{
+  "settings": {
+    "repeats": 3,
+    "tasks": [
+      "ttl_review",
+      "regression_tests",
+      "intervals",
+      "ttl_implementation"
+    ],
+    "temperature": 0,
+    "max_tokens": 4096,
+    "timeout_seconds": 900,
+    "setup_timeout_seconds": 2400,
+    "seed": 42,
+    "concurrency": [
+      1,
+      2,
+      4
+    ],
+    "load_requests_per_level": 4,
+    "load_max_tokens": 256
+  },
+  "nodes": [
+    {
+      "id": "labcomp",
+      "ssh": "j@100.120.160.53"
+    },
+    {
+      "id": "cuda2",
+      "ssh": "j@100.75.127.122"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "single-iq3",
+      "label": "One 3060 \u00b7 27B IQ3_XXS",
+      "architecture": "single_gpu",
+      "workflow": "single",
+      "enabled": true,
+      "endpoints": [
+        {
+          "url": "http://100.120.160.53:8000/v1",
+          "model": "local-coder"
+        }
+      ],
+      "model_file": "Qwen3.8-27B-GSQ-RCO-IQ3_XXS.gguf",
+      "context": 32768,
+      "reasoning_budget": 1024,
+      "setup_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "single"
+      ],
+      "teardown_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "stop"
+      ]
+    },
+    {
+      "id": "rpc-iq3",
+      "label": "Two 3060s RPC \u00b7 same 27B IQ3_XXS",
+      "architecture": "distributed_model",
+      "workflow": "single",
+      "enabled": true,
+      "endpoints": [
+        {
+          "url": "http://100.120.160.53:8000/v1",
+          "model": "local-coder"
+        }
+      ],
+      "model_file": "Qwen3.8-27B-GSQ-RCO-IQ3_XXS.gguf",
+      "context": 32768,
+      "reasoning_budget": 1024,
+      "setup_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "rpc-iq3"
+      ],
+      "teardown_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "stop"
+      ]
+    },
+    {
+      "id": "rpc-q5",
+      "label": "Two 3060s RPC \u00b7 27B Q5_K_M",
+      "architecture": "distributed_model",
+      "workflow": "single",
+      "enabled": true,
+      "endpoints": [
+        {
+          "url": "http://100.120.160.53:8000/v1",
+          "model": "local-coder"
+        }
+      ],
+      "model_file": "Qwen3.8-27B-Q5_K_M.gguf",
+      "context": 32768,
+      "reasoning_budget": 1024,
+      "setup_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "rpc-q5"
+      ],
+      "teardown_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "stop"
+      ]
+    },
+    {
+      "id": "independent",
+      "label": "Two independent 3060s \u00b7 IQ3 request pool",
+      "architecture": "independent_pool",
+      "workflow": "single",
+      "enabled": true,
+      "endpoints": [
+        {
+          "url": "http://100.120.160.53:8000/v1",
+          "model": "local-coder"
+        },
+        {
+          "url": "http://100.75.127.122:8000/v1",
+          "model": "local-coder"
+        }
+      ],
+      "model_file": "Qwen3.8-27B-GSQ-RCO-IQ3_XXS.gguf",
+      "context": 32768,
+      "reasoning_budget": 1024,
+      "setup_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "independent"
+      ],
+      "teardown_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "stop"
+      ]
+    },
+    {
+      "id": "collaborating",
+      "label": "Two independent 3060s \u00b7 IQ3 review/revise",
+      "architecture": "collaborating_agents",
+      "workflow": "review_revise",
+      "enabled": true,
+      "endpoints": [
+        {
+          "url": "http://100.120.160.53:8000/v1",
+          "model": "local-coder"
+        },
+        {
+          "url": "http://100.75.127.122:8000/v1",
+          "model": "local-coder"
+        }
+      ],
+      "model_file": "Qwen3.8-27B-GSQ-RCO-IQ3_XXS.gguf",
+      "context": 32768,
+      "reasoning_budget": 1024,
+      "setup_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "independent"
+      ],
+      "teardown_argv": [
+        "bash",
+        "scripts/scenario.sh",
+        "stop"
+      ]
+    }
+  ]
+}

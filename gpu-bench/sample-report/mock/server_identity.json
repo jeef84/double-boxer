@@ -1,0 +1,12 @@
+[
+  {
+    "endpoint": "http://127.0.0.1:40747/v1",
+    "models": {
+      "data": [
+        {
+          "id": "local-coder"
+        }
+      ]
+    }
+  }
+]

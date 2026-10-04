@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><title>GPU benchmark</title><style>body{font:16px system-ui;margin:40px auto;max-width:1150px;padding:20px;color:#172b3a}table{border-collapse:collapse;width:100%;margin:24px 0}td,th{padding:12px;border-bottom:1px solid #ccd4dc;text-align:left}th{background:#eaf1f7}pre{white-space:pre-wrap;font:13px ui-monospace}h1{color:#123b65}@media print{body{margin:0;font-size:11px}tr{break-inside:avoid}}</style><h1>GPU architecture benchmark</h1><p>MOCK integration test only — no GPU measurements</p><p>Observed task correctness, latency and concurrency. Unmeasured scenarios are not estimates.</p><table><tr><th>Configuration</th><th>Architecture</th><th>Success</th><th>Task median / p95 seconds</th><th>First text / answer seconds</th></tr><tr><td>MOCK SERVER — NOT GPU MEASUREMENTS</td><td>mock_validation</td><td>2/2</td><td>0.00 / 0.00</td><td>0.00 / 0.00</td></tr></table><h2>Throughput under concurrency</h2><table><tr><th>Configuration</th><th>Clients</th><th>Completed</th><th>Requests/min</th><th>Output tokens/s</th></tr><tr><td>MOCK SERVER — NOT GPU MEASUREMENTS</td><td>1</td><td>2/2</td><td>43648.24</td><td>30553.77</td></tr><tr><td>MOCK SERVER — NOT GPU MEASUREMENTS</td><td>2</td><td>2/2</td><td>73445.57</td><td>51411.90</td></tr></table><h2>Methods, caveats and evidence</h2><pre># GPU architecture benchmark
+Run: MOCK integration test only — no GPU measurements · Harness 1.0.0
+
+## Measured comparison
+| Configuration | Architecture | Success | Mean check score | Task median / p95 (s) | First text / answer median (s) |
+|---|---|---:|---:|---:|---:|
+| MOCK SERVER — NOT GPU MEASUREMENTS | mock_validation | 2/2 | 1.00 | 0.00 / 0.00 | 0.00 / 0.00 |
+
+## Concurrency and throughput
+| Configuration | Clients | Completed / attempted | Requests/min | Reported output tokens/s | p95 first text (s) |
+|---|---:|---:|---:|---:|---:|
+| MOCK SERVER — NOT GPU MEASUREMENTS | 1 | 2/2 | 43648.24 | 30553.77 | 0.00 |
+| MOCK SERVER — NOT GPU MEASUREMENTS | 2 | 2/2 | 73445.57 | 51411.90 | 0.00 |
+
+## Interpretation and limits
+- Success means all independent checks for a task passed; a correct partial answer is not a task success.
+- Review uses a synthetic version of the TTL defects, not your original files. Coding uses six independent unittest checks per task. Generated regression tests are scored against the original, a fixed implementation and four isolated mutations. No model self-reported counts are trusted.
+- First text includes reasoning; first answer excludes reasoning. These are client-observed times from request start, including queue/network delay, and SSE chunks can contain multiple tokens.
+- Throughput tokens come only from server-reported usage and include reasoning when the server counts it. Missing counts remain missing; characters are never called tokens.
+- Task time includes all model calls and grading. Collaborating agents use producer → reviewer → producer; parallel-independent load uses round-robin routing across endpoints.
+- Model/quantization changes confound architecture comparisons. Use the same file/settings on one GPU and RPC to isolate transport; compare IQ3 single versus Q5 RPC separately as a capacity-enabled quality comparison.
+- Requests include unique trial markers, but shared prefix caches may remain warm. This is an application benchmark, not a guaranteed cold-prefill benchmark. Warmup is excluded.
+- GPU/network samples cover each scenario, including warmup and load tests. Tailscale counters include all traffic on that interface, not RPC-only traffic; do not add both hosts and call it unique transferred bytes.
+- No energy estimate is produced from sparse samples. GPU power is not wall-system power. No claim about a network bottleneck follows from bandwidth alone.
+- Small samples have wide uncertainty; repeated tasks are correlated and confidence intervals are descriptive, not proof of general coding reliability.
+- This controlled harness is not OpenCode: it tests model review/coding and artifact exchange, not unrestricted editor tools, web search, or whole-repository coding.
+- Server availability or setup failures remain in the evidence. Unmeasured configurations have no invented numbers.
+
+## Per-configuration evidence
+
+### MOCK SERVER — NOT GPU MEASUREMENTS
+Success 95% Wilson interval: 34.2%–100.0%; infrastructure errors: 0.
+Telemetry: `{}`
+Setup completed.
+</pre>

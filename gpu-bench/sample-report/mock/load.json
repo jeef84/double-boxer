@@ -1,0 +1,87 @@
+{
+  "levels": [
+    {
+      "concurrency": 1,
+      "attempted": 2,
+      "completed": 2,
+      "duration_s": 0.0027492519998304488,
+      "requests_per_min": 43648.23595923568,
+      "output_tokens_per_s": 30553.765171464976,
+      "p95_ttft_s": 0.0006920959999661136,
+      "requests": [
+        {
+          "content": "{\"outcomes\":[\"error\",\"fail\",\"fail\",\"pass\",\"pass\"],\"defects\":[{\"category\":\"constructor_shadowing\"},{\"category\":\"frozen_clock\"},{\"category\":\"eviction_before_expiry\"}]}",
+          "reasoning": "checking",
+          "usage": {
+            "completion_tokens": 42,
+            "prompt_tokens": 10
+          },
+          "server_timings": {},
+          "ttft_s": 0.0006920959999661136,
+          "first_content_s": 0.000704924999809009,
+          "duration_s": 0.0007560519998150994,
+          "finish_reason": "stop",
+          "text_chunks": 2,
+          "output_tokens_per_wall_second": 55551.73455036366
+        },
+        {
+          "content": "{\"outcomes\":[\"error\",\"fail\",\"fail\",\"pass\",\"pass\"],\"defects\":[{\"category\":\"constructor_shadowing\"},{\"category\":\"frozen_clock\"},{\"category\":\"eviction_before_expiry\"}]}",
+          "reasoning": "checking",
+          "usage": {
+            "completion_tokens": 42,
+            "prompt_tokens": 10
+          },
+          "server_timings": {},
+          "ttft_s": 0.0006206769999153039,
+          "first_content_s": 0.0006323650000013004,
+          "duration_s": 0.0006591549999939161,
+          "finish_reason": "stop",
+          "text_chunks": 2,
+          "output_tokens_per_wall_second": 63717.941911064394
+        }
+      ]
+    },
+    {
+      "concurrency": 2,
+      "attempted": 2,
+      "completed": 2,
+      "duration_s": 0.0016338630002792343,
+      "requests_per_min": 73445.5703932897,
+      "output_tokens_per_s": 51411.899275302785,
+      "p95_ttft_s": 0.0009334100000160106,
+      "requests": [
+        {
+          "content": "{\"outcomes\":[\"error\",\"fail\",\"fail\",\"pass\",\"pass\"],\"defects\":[{\"category\":\"constructor_shadowing\"},{\"category\":\"frozen_clock\"},{\"category\":\"eviction_before_expiry\"}]}",
+          "reasoning": "checking",
+          "usage": {
+            "completion_tokens": 42,
+            "prompt_tokens": 10
+          },
+          "server_timings": {},
+          "ttft_s": 0.0009334100000160106,
+          "first_content_s": 0.0009425140001440013,
+          "duration_s": 0.0009794090001378208,
+          "finish_reason": "stop",
+          "text_chunks": 2,
+          "output_tokens_per_wall_second": 42883.00392797067
+        },
+        {
+          "content": "{\"outcomes\":[\"error\",\"fail\",\"fail\",\"pass\",\"pass\"],\"defects\":[{\"category\":\"constructor_shadowing\"},{\"category\":\"frozen_clock\"},{\"category\":\"eviction_before_expiry\"}]}",
+          "reasoning": "checking",
+          "usage": {
+            "completion_tokens": 42,
+            "prompt_tokens": 10
+          },
+          "server_timings": {},
+          "ttft_s": 0.0008476499997414066,
+          "first_content_s": 0.0008730579997973109,
+          "duration_s": 0.0009137099996223697,
+          "finish_reason": "stop",
+          "text_chunks": 2,
+          "output_tokens_per_wall_second": 45966.444514515904
+        }
+      ]
+    }
+  ],
+  "complete": true
+}
